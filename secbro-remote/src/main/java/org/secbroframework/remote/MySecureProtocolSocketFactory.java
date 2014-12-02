@@ -92,6 +92,7 @@ public class MySecureProtocolSocketFactory implements ProtocolSocketFactory {
         }
     }
 
+    // inner class
     private static class TrustAnyTrustManager implements X509TrustManager {
 
         public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
