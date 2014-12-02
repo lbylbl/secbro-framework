@@ -36,27 +36,25 @@ public class MySecureProtocolSocketFactory implements ProtocolSocketFactory {
 	
 	public MySecureProtocolSocketFactory(){
 		super(); // call the super construction method
-		logger.info("init MySecureProtocolSocketFactory static");
+		logger.info("To init MySecureProtocolSocketFactory static");
 	}
 	
     private SSLContext createSSLContext() {
+    	logger.info("Begin to create SSLContext ...");
         SSLContext sslcontext = null;
         try {
             sslcontext = SSLContext.getInstance("SSL");
             sslcontext.init(null, new TrustManager[] { new TrustAnyTrustManager() }, new java.security.SecureRandom());
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+        	logger.error("create SSLContext exception:", e);
         } catch (KeyManagementException e) {
-            e.printStackTrace();
+        	logger.error("create SSLContext exception:", e);
         }
         return sslcontext;
     }
 
     private SSLContext getSSLContext() {
-        if (this.sslcontext == null) {
-            this.sslcontext = createSSLContext();
-        }
-        return this.sslcontext;
+    	return this.sslcontext == null ? createSSLContext() : this.sslcontext;
     }
 
     public Socket createSocket(Socket socket, String host, int port, boolean autoClose) throws IOException,
@@ -76,11 +74,13 @@ public class MySecureProtocolSocketFactory implements ProtocolSocketFactory {
     public Socket createSocket(String host, int port, InetAddress localAddress, int localPort,
             HttpConnectionParams params) throws IOException, UnknownHostException, ConnectTimeoutException {
         if (params == null) {
+        	logger.info("The params are null!");
             throw new IllegalArgumentException("Parameters may not be null");
         }
         int timeout = params.getConnectionTimeout();
         SocketFactory socketfactory = getSSLContext().getSocketFactory();
         if (timeout == 0) {
+        	logger.info("The timeout is 0");
             return socketfactory.createSocket(host, port, localAddress, localPort);
         } else {
             Socket socket = socketfactory.createSocket();
@@ -92,7 +92,6 @@ public class MySecureProtocolSocketFactory implements ProtocolSocketFactory {
         }
     }
 
-    // 自定义私有类
     private static class TrustAnyTrustManager implements X509TrustManager {
 
         public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
