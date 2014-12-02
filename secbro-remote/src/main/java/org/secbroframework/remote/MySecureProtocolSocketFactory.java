@@ -22,15 +22,23 @@ import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Implements the factory for creating Sockets. <br/>
+ * And this implementation class doesn't check the certificate;
+ * @see org.apache.commons.httpclient.protocol.ProtocolSocketFactory
+ * @see org.apache.commons.httpclient.protocol.Protocol
+ * @since 1.0
+ * @author ZhuZhiSheng
+ */
 public class MySecureProtocolSocketFactory implements ProtocolSocketFactory {
 	private static final Logger logger = LoggerFactory.getLogger(MySecureProtocolSocketFactory.class);
+	private SSLContext sslcontext = null;
 	
-    static {
-    	logger.info(">>>>in MySecureProtocolSocketFactory>>");
-    }
-    
-    private SSLContext sslcontext = null;
-
+	public MySecureProtocolSocketFactory(){
+		super(); // call the super construction method
+		logger.info("init MySecureProtocolSocketFactory static");
+	}
+	
     private SSLContext createSSLContext() {
         SSLContext sslcontext = null;
         try {
