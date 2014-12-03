@@ -12,15 +12,255 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<spring.version>3.1.2.RELEASE</spring.version>
+	<spring.jdbc.version>2.0.8</spring.jdbc.version>
+	<spring.ibatis.version>2.0.8</spring.ibatis.version>
+	<junit.version>4.7</junit.version>
+	<log4j.version>1.2.9</log4j.version>
+	<slf4j-api.version>1.7.2</slf4j-api.version>
+	<slf4j-log4j12.version>1.7.2</slf4j-log4j12.version>
+	
+	<!--ojdbc14.version>10.2.0.2.0</ojdbc14.version-->
+	<ojdbc6.version>11.2.0.3</ojdbc6.version>
+	<ibatis.sqlmap.version>2.3.0</ibatis.sqlmap.version>
+	<servlet.api.version>2.3</servlet.api.version>
+	<poi.version>3.8</poi.version>
+	<jstl.version>1.2</jstl.version>
+	<freemarker.version>2.3.20</freemarker.version>
+	
+	<commons.dbcp.version>1.4</commons.dbcp.version>
+	<common.lang.version>2.6</common.lang.version>
+	<commons.lang.version>2.6</commons.lang.version>
+	<commons.collections.version>3.1</commons.collections.version>
+	<commons.beanutils.version>1.8.2</commons.beanutils.version>
+	<commons-fileupload.version>1.2.2</commons-fileupload.version>
+	<commons-io.version>1.4</commons-io.version>
+	<commons.httpclient.version>3.0</commons.httpclient.version>
+
+	<!-- add jar for reagw-settle by wangzengxian -->
+	<velocity.version>1.7</velocity.version>
+	<groovy.version>1.7.6</groovy.version>
+	<jxls.version>0.9.9</jxls.version>
+	<cxf.version>2.4.3</cxf.version>
+	<quartz.version>1.5.0-RC2</quartz.version>
+	<ezmorph.version>1.0.6</ezmorph.version>
+	<json-lib.version>2.4</json-lib.version>
+
+	<reapal.common.version>2.0.10</reapal.common.version>
+
+	<reagw.deploy.version>1.0.0</reagw.deploy.version>
+	<reagw.service.api.version>0.0.1</reagw.service.api.version>
+
+	<ericframework.version>1.3.6</ericframework.version>
+	<java.home>E:\develop\java\jdk1.7.0_51</java.home>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+	<!--Spring start-->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aop</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<scope>test</scope>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.ibatis</groupId>
+		<artifactId>ibatis-sqlmap</artifactId>
+		<version>${ibatis.sqlmap.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-ibatis</artifactId>
+		<version>${spring.ibatis.version}</version>
+	</dependency>
+	<!--Spring end-->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>${log4j.version}</version>
+	</dependency>
+	<!-- slf4j bound to Log4j start -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>${slf4j-api.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>${slf4j-log4j12.version}</version>
+	</dependency>
+	<!-- slf4j bound to Log4j end -->
+	<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${common.lang.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>${commons.dbcp.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons.beanutils.version}</version>
+        </dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>${commons.httpclient.version}</version>
+		</dependency>
+		<!--dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>${ojdbc14.version}</version>
+		</dependency-->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>${ojdbc6.version}</version>
+		</dependency>
+	
+		<!-- add jar for reagw-settle by wangzengxian -->
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<!-- 
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>${groovy.version}</version>
+		</dependency> 
+		-->
+		<!-- 
+		<dependency>
+			<groupId>net.sf.jxls</groupId>
+			<artifactId>jxls-core</artifactId>
+			<version>${jxls.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jxls</groupId>
+			<artifactId>jxls-reader</artifactId>
+			<version>${jxls.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>net.sf.ezmorph</groupId>
+		    <artifactId>ezmorph</artifactId>
+		    <version>${ezmorph.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>net.sf.json-lib</groupId>
+		    <artifactId>json-lib</artifactId>
+		    <version>${json-lib.version}</version>
+		</dependency> 
+		-->
+
+		<!-- cxf client begin -->
+		<!-- 
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		-->
+		<!-- cxf client end -->
+        <!-- cxf server begin -->
+        <!-- 
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-databinding-aegis</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-databinding-jaxb</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-management</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-common-utilities</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		-->
+        <!-- cxf server end -->
+		<dependency>
+			<groupId>com.reapal.common</groupId>
+			<artifactId>reapal-common-lang</artifactId>
+			<version>${reapal.common.version}</version>
+		</dependency>
+		<!-- xstream -->
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId> 
+			<artifactId>xstream</artifactId> 
+			<version>1.4.5</version> 
+		</dependency>
+		<!-- google gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>2.4</version>
+		</dependency>
   </dependencies>
   <modules>
     <module>secbro-remote</module>
