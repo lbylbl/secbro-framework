@@ -239,11 +239,11 @@
 		</dependency>
 		-->
         <!-- cxf server end -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.reapal.common</groupId>
 			<artifactId>reapal-common-lang</artifactId>
 			<version>${reapal.common.version}</version>
-		</dependency>
+		</dependency> -->
 		<!-- xstream -->
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId> 
