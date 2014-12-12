@@ -46,11 +46,12 @@ public class HttpClientServiceTest extends TestCase{
     public void testHttpClientService(){
 		// https://bgp.reapal.com
 		// https://www.alipay.com/
-		String url = "https://www.alipay.com/";
+		String url = "http://s-103911.abc188.com/index.php/Home/Common/return_extract";
 		logger.info("url地址：{}" + url);
 		Map<String,Object> map = client.getHttpResp("UTF-8", url, new HttpMethodCallback(){
 			@Override
 			public PostMethod initMethod(PostMethod method) {
+			    method.addParameter("resError", "{}");
 				return method;
 			}
 		});

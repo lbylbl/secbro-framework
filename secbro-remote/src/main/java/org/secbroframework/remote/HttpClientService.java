@@ -34,7 +34,7 @@ public class HttpClientService {
 
             PostMethod method = new PostMethod(httpUrl);
             method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpMethodRetryHandler());
-            method.getParams().setParameter(HttpMethodParams.SO_TIMEOUT, new Integer(20000));
+            method.getParams().setParameter(HttpMethodParams.SO_TIMEOUT, new Integer(2000));
 
             client.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, charset);
             client.getParams().setContentCharset(charset);
