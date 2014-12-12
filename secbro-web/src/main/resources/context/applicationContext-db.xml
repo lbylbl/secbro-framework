@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="reagwDataSource_account" class="com.reapal.common.dbcp.AESBasicDataSource"
+		destroy-method="close" p:driverClassName="${db.driver}" p:url="${db.url}"
+		p:username="${db.account.username}" p:aesPassword="${db.account.password}"
+		p:maxActive="${db.account.maxactive}" p:maxWait="${db.account.maxwait}"
+		p:poolPreparedStatements="true" p:defaultAutoCommit="false">
+	</bean>
+	
+	<bean id="reagwDataSource_ismp" class="com.reapal.common.dbcp.AESBasicDataSource"
+		destroy-method="close" p:driverClassName="${db.driver}" p:url="${db.url}"
+		p:username="${db.ismp.username}" p:aesPassword="${db.ismp.password}"
+		p:maxActive="${db.ismp.maxactive}" p:maxWait="${db.ismp.maxwait}"
+		p:poolPreparedStatements="true" p:defaultAutoCommit="false">
+	</bean>
+	
+	<bean id="reagwDataSource_boss" class="com.reapal.common.dbcp.AESBasicDataSource"
+		destroy-method="close" p:driverClassName="${db.driver}" p:url="${db.url}"
+		p:username="${db.boss.username}" p:aesPassword="${db.boss.password}"
+		p:maxActive="${db.boss.maxactive}" p:maxWait="${db.boss.maxwait}"
+		p:poolPreparedStatements="true" p:defaultAutoCommit="false">
+	</bean>
+	
+	<bean id="reagwDataSource_settle" class="com.reapal.common.dbcp.AESBasicDataSource"
+		destroy-method="close" p:driverClassName="${db.driver}" p:url="${db.url}"
+		p:username="${db.settle.username}" p:aesPassword="${db.settle.password}"
+		p:maxActive="${db.settle.maxactive}" p:maxWait="${db.settle.maxwait}"
+		p:poolPreparedStatements="true" p:defaultAutoCommit="false">
+	</bean>
+	
+</beans>
+
+
+
