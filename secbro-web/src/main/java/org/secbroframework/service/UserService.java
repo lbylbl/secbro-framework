@@ -1,7 +1,11 @@
 package org.secbroframework.service;
 
+import org.secbroframework.model.User;
+
 public interface UserService {
     
-    public void deleteUser(int id);
+    void deleteUser(int id);
+    
+    User getUser(int id);
 
 }
