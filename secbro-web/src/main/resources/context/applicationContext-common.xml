@@ -14,73 +14,10 @@
            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd ">
 	
-	<context:component-scan base-package="com.reapal.reagw.biz"/>
-	<context:component-scan base-package="com.reapal.reagw.core"/>
-	<context:component-scan base-package="com.reapal.reagw.ext.client.http"/>
+	<context:component-scan base-package="org.secbroframework"/>
 	
-	
-	<!-- 加载资源文件 -->
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>file:/opt/reagw/config/config-env.properties</value>
-				<value>file:/opt/reagw/config/db.properties</value>
-			</list>
-		</property>
-	</bean>
-	<util:properties id="settings" location="file:/opt/reagw/config/application.properties" />  
-	<!-- log4j配置 -->
-	<bean id="log4jInitialization"
-		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-		<property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
-		<property name="targetMethod" value="initLogging" />
-		<property name="arguments">
-			<list>
-				<value>file:/opt/reagw/config/log4j.xml</value>				
-			</list>
-		</property>
-	</bean>
-	<!-- 定义统一线程池 -->
-	<bean id="taskExecutor"
-		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-		<property name="corePoolSize" value="5" />
-		<property name="maxPoolSize" value="10" />
-		<property name="queueCapacity" value="25" />
-	</bean>
-	
-	<!-- dao 
-	<import resource="classpath:context/applicationContext-reagw-boss-dao.xml" />
-	<import resource="classpath:context/applicationContext-reagw-ismp-dao.xml" />
-	<import resource="classpath:context/applicationContext-reagw-account-dao.xml" />
-	<import resource="classpath:context/applicationContext-reagw-settle-dao.xml" />-->
-	<!-- <import resource="classpath:context/applicationContext-common-data.xml" /> -->
-	
-	<!-- common 
-	<import resource="classpath:context/applicationContext-reagw-common.xml" />
-	-->
-	<!-- engine
-	<import resource="classpath:context/applicationContext-reagw-engine.xml" />
-	 -->
-	<!-- jobs !-->
-	<!-- <import resource="classpath:context/applicationContext-jobs.xml" /> -->
-	<!-- client 
-	<import resource="classpath:context/applicationContext-reagw-client.xml" />
-	-->
-	<!-- contract 
-	<import resource="classpath:context/applicationContext-reagw-contract.xml" />
-	-->
-	<!-- deposit 
-	<import resource="classpath:context/applicationContext-reagw-deposit.xml" />
-	-->
-	<!-- rongxin
-	<import resource="classpath:context/applicationContext-reagw-rongxin.xml" />-->
-	<!-- tender 
-	<import resource="classpath:context/applicationContext-reagw-tender.xml" />
-	-->
 	<!-- freemaker视图解析器 -->
-	<bean id="viewResolver"
-        class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
         <property name="cache" value="true" />
         <property name="prefix" value="" />
         <property name="suffix" value=".ftl" />
@@ -121,27 +58,18 @@
 	        </props>  
 	    </property>  
 	       -->
-	    <property name="defaultStatusCode" value="404"/>  
+	    <property name="defaultStatusCode" value="404"/>
 	</bean>  
 	
-	<!-- 配置JCaptcha验证码功能 -->
-	<!-- <bean id="fastHashMapCaptchaStore" class="com.octo.captcha.service.captchastore.FastHashMapCaptchaStore"/>
-    <bean id="captchaEngineEx" class="com.reapal.reagw.core.engine.jcaptcha.JCaptchaEngine"/>
-    <bean id="imageCaptchaService" class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService">
-        <constructor-arg type="com.octo.captcha.service.captchastore.CaptchaStore" index="0">
-            <ref bean="fastHashMapCaptchaStore"/>
-        </constructor-arg>
-        <constructor-arg type="com.octo.captcha.engine.CaptchaEngine" index="1">
-            <ref bean="captchaEngineEx"/>
-        </constructor-arg>
-        <constructor-arg index="2">
-            <value>180</value>
-        </constructor-arg>
-        <constructor-arg index="3">
-            <value>100000</value>
-        </constructor-arg>
-        <constructor-arg index="4">
-            <value>75000</value>
-        </constructor-arg>
-    </bean> -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+       <property name="dataSource" ref="dataSource" />
+       <property name="mapperLocations" value="classpath:sqlMap/*Mapper.xml" />
+       <!-- 一般对应实体类所在的包，这个时候会自动取对应包中不包括包名的简单类名作为包括包名的别名。多个package之间可以用逗号或者分号等来进行分隔。 -->
+       <property name="typeAliasesPackage" value="org.secbroframework.model" />
+	</bean> 
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+       <property name="basePackage" value="org.secbroframework.mapper" />
+       <property name="markerInterface" value="org.secbroframework.mapper.SuperMapper"/>
+       <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
 </beans>
