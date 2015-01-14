@@ -19,10 +19,10 @@
 	<log4j.version>1.2.9</log4j.version>
 	<slf4j-api.version>1.7.2</slf4j-api.version>
 	<slf4j-log4j12.version>1.7.2</slf4j-log4j12.version>
+	<mybatis-spring>1.2.2</mybatis-spring>
+	<mybatis.version>3.2.8</mybatis.version>
 	
-	<!--ojdbc14.version>10.2.0.2.0</ojdbc14.version-->
 	<ojdbc6.version>11.2.0.3</ojdbc6.version>
-	<ibatis.sqlmap.version>2.3.0</ibatis.sqlmap.version>
 	<servlet.api.version>2.3</servlet.api.version>
 	<poi.version>3.8</poi.version>
 	<jstl.version>1.2</jstl.version>
@@ -55,79 +55,89 @@
 	<java.home>E:\develop\java\jdk1.7.0_51</java.home>
   </properties>
 
-  <dependencies>
-	<!--Spring start-->
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-core</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-context</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-aop</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-context-support</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-beans</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-webmvc</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-test</artifactId>
-		<scope>test</scope>
-		<version>${spring.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.ibatis</groupId>
-		<artifactId>ibatis-sqlmap</artifactId>
-		<version>${ibatis.sqlmap.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-ibatis</artifactId>
-		<version>${spring.ibatis.version}</version>
-	</dependency>
-	<!--Spring end-->
-	<dependency>
-		<groupId>junit</groupId>
-		<artifactId>junit</artifactId>
-		<version>${junit.version}</version>
-		<scope>test</scope>
-	</dependency>
-	<dependency>
-		<groupId>log4j</groupId>
-		<artifactId>log4j</artifactId>
-		<version>${log4j.version}</version>
-	</dependency>
-	<!-- slf4j bound to Log4j start -->
-	<dependency>
-		<groupId>org.slf4j</groupId>
-		<artifactId>slf4j-api</artifactId>
-		<version>${slf4j-api.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.slf4j</groupId>
-		<artifactId>slf4j-log4j12</artifactId>
-		<version>${slf4j-log4j12.version}</version>
-	</dependency>
-	<!-- slf4j bound to Log4j end -->
-	<dependency>
+	<dependencies>
+		<!--Spring start-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis-spring</artifactId>
+		    <version>${mybatis-spring}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		    <version>${mybatis.version}</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.apache.ibatis</groupId>
+			<artifactId>ibatis-sqlmap</artifactId>
+			<version>${ibatis.sqlmap.version}</version>
+		</dependency> -->
+		<!-- <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-ibatis</artifactId>
+			<version>${spring.ibatis.version}</version>
+		</dependency> -->
+		<!--Spring end-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<!-- slf4j bound to Log4j start -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j-log4j12.version}</version>
+		</dependency>
+		<!-- slf4j bound to Log4j end -->
+		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>${common.lang.version}</version>
@@ -138,20 +148,15 @@
 			<version>${commons.dbcp.version}</version>
 		</dependency>
 		<dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>${commons.beanutils.version}</version>
-        </dependency>
+	           <groupId>commons-beanutils</groupId>
+	           <artifactId>commons-beanutils</artifactId>
+	           <version>${commons.beanutils.version}</version>
+	    </dependency>
 		<dependency>
 			<groupId>commons-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
 			<version>${commons.httpclient.version}</version>
 		</dependency>
-		<!--dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc14</artifactId>
-			<version>${ojdbc14.version}</version>
-		</dependency-->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
@@ -170,103 +175,25 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-
-		<!-- 
-		<dependency>
-			<groupId>org.codehaus.groovy</groupId>
-			<artifactId>groovy-all</artifactId>
-			<version>${groovy.version}</version>
-		</dependency> 
-		-->
-		<!-- 
-		<dependency>
-			<groupId>net.sf.jxls</groupId>
-			<artifactId>jxls-core</artifactId>
-			<version>${jxls.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.jxls</groupId>
-			<artifactId>jxls-reader</artifactId>
-			<version>${jxls.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>net.sf.ezmorph</groupId>
-		    <artifactId>ezmorph</artifactId>
-		    <version>${ezmorph.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>net.sf.json-lib</groupId>
-		    <artifactId>json-lib</artifactId>
-		    <version>${json-lib.version}</version>
-		</dependency> 
-		-->
-
-		<!-- cxf client begin -->
-		<!-- 
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		-->
-		<!-- cxf client end -->
-        <!-- cxf server begin -->
-        <!-- 
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-databinding-aegis</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-databinding-jaxb</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-management</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-common-utilities</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		-->
-        <!-- cxf server end -->
+	       <!-- cxf server end -->
 		<dependency>
 			<groupId>com.reapal.common</groupId>
 			<artifactId>reapal-common-lang</artifactId>
 			<version>${reapal.common.version}</version>
 		</dependency>
 		<!-- xstream -->
-		<!-- <dependency>
-			<groupId>com.thoughtworks.xstream</groupId> 
-			<artifactId>xstream</artifactId> 
-			<version>1.4.5</version> 
-		</dependency> -->
 		<!-- google gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.2.4</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>opensymphony</groupId>
-			<artifactId>sitemesh</artifactId>
-			<version>2.4</version>
-		</dependency> -->
 		<dependency>
 			<groupId>freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 			<version>${freemarker.version}</version>
 		</dependency>
-  </dependencies>
+	</dependencies>
   <modules>
     <module>secbro-remote</module>
     <module>secbro-web</module>
