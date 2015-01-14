@@ -67,12 +67,6 @@
  		-->
         <property name="filters" value="${filters}" />
     </bean>
-    <!-- jdbcTemplate -->  
-    <bean id="jdbc" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource">
-            <ref bean="dataSource" />
-        </property>
-    </bean>  
 </beans>
 
 
