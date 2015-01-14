@@ -63,13 +63,70 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
        <property name="dataSource" ref="dataSource" />
-       <property name="mapperLocations" value="classpath:sqlMap/*Mapper.xml" />
+       <!-- <property name="mapperLocations" value="classpath:sqlMap/*Mapper.xml" /> -->
        <!-- 一般对应实体类所在的包，这个时候会自动取对应包中不包括包名的简单类名作为包括包名的别名。多个package之间可以用逗号或者分号等来进行分隔。 -->
-       <property name="typeAliasesPackage" value="org.secbroframework.model" />
+       <!-- <property name="typeAliasesPackage" value="org.secbroframework.model" /> -->
 	</bean> 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
        <property name="basePackage" value="org.secbroframework.mapper" />
        <property name="markerInterface" value="org.secbroframework.mapper.SuperMapper"/>
        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    
+    
+    <!-- 加载资源文件 -->
+    <context:property-placeholder location="classpath:dbconfig.properties"/>
+    
+    <!-- 配置数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
+        <!-- <property name="driverClassName" value="${driverClassName}" /> -->
+        
+        <!-- 基本属性 url、user、password -->
+        <property name="url" value="${url}" />
+        <property name="username" value="${username}" />
+        <property name="password" value="${password}" />
+  
+		<!-- 初始化连接大小 -->
+        <property name="initialSize" value="${initialSize}" />
+        <!-- 连接池最大空闲 -->
+        <property name="minIdle" value="${minIdle}" />
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="${maxActive}" />
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${maxWait}" />
+  
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}" />
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}" />
+        
+  		<!-- 用来检测连接是否有效的sql，要求是一个查询语句。如果validationQuery为null，testOnBorrow、testOnReturn、testWhileIdle都不会其作用。 -->
+        <!-- <property name="validationQuery" value="${validationQuery}" /> -->
+        <!-- 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。 -->
+        <!-- <property name="testWhileIdle" value="${testWhileIdle}" /> -->
+        <!-- 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。 -->
+        <!-- <property name="testOnBorrow" value="${testOnBorrow}" /> -->
+        <!-- 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能 -->
+        <!-- <property name="testOnReturn" value="${testOnReturn}" /> -->
+        <!-- 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。
+			在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置大一些，比如说100
+ 		-->
+        <property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}" />
+        
+        <!-- 打开removeAbandoned功能 -->
+        <property name="removeAbandoned" value="${removeAbandoned}" />
+        <!-- 1800秒，也就是30分钟 -->
+        <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}" />
+        <!-- 关闭abanded连接时输出错误日志 -->
+        <property name="logAbandoned" value="${logAbandoned}" /> 
+        
+        <!-- 配置监控统计拦截的filters -->
+        <!-- 属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：
+			监控统计用的filter:stat
+			日志用的filter:log4j
+ 			防御sql注入的filter:wall 
+ 		-->
+        <property name="filters" value="${filters}" />
     </bean>
 </beans>
