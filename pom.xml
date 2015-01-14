@@ -103,16 +103,6 @@
 		    <artifactId>mybatis</artifactId>
 		    <version>${mybatis.version}</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.apache.ibatis</groupId>
-			<artifactId>ibatis-sqlmap</artifactId>
-			<version>${ibatis.sqlmap.version}</version>
-		</dependency> -->
-		<!-- <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-ibatis</artifactId>
-			<version>${spring.ibatis.version}</version>
-		</dependency> -->
 		<!--Spring end-->
 		<dependency>
 			<groupId>junit</groupId>
@@ -175,13 +165,6 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-	       <!-- cxf server end -->
-		<dependency>
-			<groupId>com.reapal.common</groupId>
-			<artifactId>reapal-common-lang</artifactId>
-			<version>${reapal.common.version}</version>
-		</dependency>
-		<!-- xstream -->
 		<!-- google gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -189,10 +172,10 @@
 			<version>2.2.4</version>
 		</dependency>
 		<dependency>
-			<groupId>freemarker</groupId>
+			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 			<version>${freemarker.version}</version>
-		</dependency>
+		</dependency> 
 	</dependencies>
   <modules>
     <module>secbro-remote</module>
