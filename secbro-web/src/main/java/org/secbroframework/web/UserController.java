@@ -1,6 +1,7 @@
 package org.secbroframework.web;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.secbroframework.model.User;
 import org.secbroframework.service.UserService;
@@ -12,6 +13,12 @@ public class UserController {
     
     @Resource
     private UserService userService;
+    
+    @RequestMapping("login.htm")
+    public String login(HttpServletRequest request){
+        
+        return "user/home";
+    }
     
     @RequestMapping("getUser.htm")
     public String getUser(){
