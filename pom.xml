@@ -190,7 +190,12 @@
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 			<version>${freemarker.version}</version>
-		</dependency> 
+		</dependency>
+		 <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		  </dependency>
 	</dependencies>
   <modules>
     <module>secbro-remote</module>
