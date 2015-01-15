@@ -28,7 +28,8 @@ public class AuthSSLX509TrustManager implements X509TrustManager {
     /**
      * @see javax.net.ssl.X509TrustManager#getAcceptedIssuers()
      */
-	public X509Certificate[] getAcceptedIssuers() {
+	@Override
+    public X509Certificate[] getAcceptedIssuers() {
         return this.defaultTrustManager.getAcceptedIssuers();
     }
 

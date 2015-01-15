@@ -111,7 +111,7 @@ public class AuthSSLProtocolSocketFactory implements SecureProtocolSocketFactory
                 if (logger.isDebugEnabled()) {
                     Enumeration<String> aliases = keystore.aliases();
                     while (aliases.hasMoreElements()) {
-                        String alias = (String) aliases.nextElement();
+                        String alias = aliases.nextElement();
                         Certificate[] certs = keystore.getCertificateChain(alias);
                         if (certs != null) {
                         	logger.debug("Certificate chain '{}':",alias);
@@ -136,7 +136,7 @@ public class AuthSSLProtocolSocketFactory implements SecureProtocolSocketFactory
                 if (logger.isDebugEnabled()) {
                     Enumeration<String> aliases = keystore.aliases();
                     while (aliases.hasMoreElements()) {
-                        String alias = (String) aliases.nextElement();
+                        String alias = aliases.nextElement();
                         logger.debug("Trusted certificate '{}':",alias);
                         Certificate trustedcert = keystore.getCertificate(alias);
                         if (trustedcert != null && trustedcert instanceof X509Certificate) {
@@ -203,6 +203,7 @@ public class AuthSSLProtocolSocketFactory implements SecureProtocolSocketFactory
      * @throws UnknownHostException
      *             if the IP address of the host cannot be determined
      */
+    @Override
     public Socket createSocket(final String host, final int port, final InetAddress localAddress, final int localPort,
             final HttpConnectionParams params) throws IOException, UnknownHostException, ConnectTimeoutException {
         if (params == null) {
@@ -220,6 +221,7 @@ public class AuthSSLProtocolSocketFactory implements SecureProtocolSocketFactory
     /**
      * @see SecureProtocolSocketFactory#createSocket(java.lang.String,int,java.net.InetAddress,int)
      */
+    @Override
     public Socket createSocket(String host, int port, InetAddress clientHost, int clientPort) throws IOException,
             UnknownHostException {
         return getSSLContext().getSocketFactory().createSocket(host, port, clientHost, clientPort);
@@ -228,6 +230,7 @@ public class AuthSSLProtocolSocketFactory implements SecureProtocolSocketFactory
     /**
      * @see SecureProtocolSocketFactory#createSocket(java.lang.String,int)
      */
+    @Override
     public Socket createSocket(String host, int port) throws IOException, UnknownHostException {
         return getSSLContext().getSocketFactory().createSocket(host, port);
     }
@@ -235,6 +238,7 @@ public class AuthSSLProtocolSocketFactory implements SecureProtocolSocketFactory
     /**
      * @see SecureProtocolSocketFactory#createSocket(java.net.Socket,java.lang.String,int,boolean)
      */
+    @Override
     public Socket createSocket(Socket socket, String host, int port, boolean autoClose) throws IOException,
             UnknownHostException {
         return getSSLContext().getSocketFactory().createSocket(socket, host, port, autoClose);
