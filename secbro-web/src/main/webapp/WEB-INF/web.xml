@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
     http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
+	<!-- 解决工程编码过滤器 -->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -17,25 +17,18 @@
 		</init-param>
 	</filter>
 	
-
-	<!-- <filter>
-		<filter-name>sitemesh</filter-name>
-		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
-	</filter> -->
-
-	<!-- <filter-mapping>
-	    <filter-name>sitemesh</filter-name>
-	    <url-pattern>*.htm</url-pattern>
-	    <dispatcher>REQUEST</dispatcher>
-	    <dispatcher>FORWARD</dispatcher>
-	    <dispatcher>INCLUDE</dispatcher>
-	  </filter-mapping> -->
-
 	<filter-mapping>
 		<filter-name>characterEncodingFilter</filter-name>
 		<url-pattern>*.htm</url-pattern>
 	</filter-mapping>
-
+	
+	<!-- 设置Spring容器加载配置文件路径 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:context/*.xml</param-value>
+	</context-param>
+	
+	<!-- 配置Spring核心控制器 -->
 	<servlet>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -45,41 +38,17 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
-	<!--sitemesh freemarker-->
-     <!--  <servlet>
-          <servlet-name>sitemesh-freemarker</servlet-name>
-          <servlet-class>com.opensymphony.module.sitemesh.freemarker.FreemarkerDecoratorServlet</servlet-class>
-          <init-param>
-              <param-name>TemplatePath</param-name>
-              <param-value>/</param-value>
-          </init-param>
-          <init-param>
-              <param-name>default_encoding</param-name>
-              <param-value>UTF-8</param-value>
-          </init-param>
-          <load-on-startup>1</load-on-startup>
-      </servlet>
-
-      <servlet-mapping>
-          <servlet-name>sitemesh-freemarker</servlet-name>
-          <url-pattern>*.ftl</url-pattern>
-      </servlet-mapping> -->
-
+	
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
-
+	
+	<!-- 加载Spring容器配置 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:context/*.xml</param-value>
-	</context-param>
-
+	
 	<error-page>
 		<error-code>404</error-code>
 		<location>/404.html</location>

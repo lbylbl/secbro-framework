@@ -67,7 +67,16 @@
  		-->
         <property name="filters" value="${filters}" />
     </bean>
+    
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+       <property name="dataSource" ref="dataSource" />
+       <property name="mapperLocations" value="classpath:sqlMaps/*Mapper.xml" />
+       <!-- 一般对应实体类所在的包，这个时候会自动取对应包中不包括包名的简单类名作为包名的别名。多个package之间可以用逗号或者分号等来进行分隔。 -->
+       <property name="typeAliasesPackage" value="org.secbroframework.model" />
+	</bean> 
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+       <property name="basePackage" value="org.secbroframework.mapper" />
+       <property name="markerInterface" value="org.secbroframework.mapper.SuperMapper"/>
+       <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
 </beans>
-
-
-
